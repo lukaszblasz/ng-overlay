@@ -1,9 +1,9 @@
-require('babel-polyfill');
 var path = require('path');
 
 module.exports = {
     entry: {
-        'index': ['babel-polyfill', './index.js']
+        'overlay': './index.js',
+        'overlay-standalone': './index-standalone.js'
     },
     output: {
         path: __dirname + '/dist',

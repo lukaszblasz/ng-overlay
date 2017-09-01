@@ -1,6 +1,3 @@
-import 'angular';
-import 'angular-sanitize';
-
 import template from './overlay.template';
 
 class OverlayDirective {
@@ -54,7 +51,7 @@ class OverlayDirective {
     }
 }
 
-OverlayDirective.$inject = ['$compile', '$sce'];
+OverlayDirective.$inject = ['$compile'];
 
-angular.module('ngOverlay', ['ngSanitize'])
-.directive('ngOverlay', ($compile, $sce) => new OverlayDirective($compile, $sce));
+angular.module('ngOverlay', [])
+.directive('ngOverlay', ($compile) => new OverlayDirective($compile));

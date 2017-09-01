@@ -2,7 +2,7 @@
   "name": "ng-overlay",
   "version": "0.0.1",
   "description": "Angular directive for overlay",
-  "main": "dist/index.js",
+  "main": "dist/overlay.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,9 @@
   "devDependencies": {
     "angular": "^1.6.6",
     "angular-sanitize": "^1.6.6",
-    "babel-polyfill": "^6.26.0",
-    "path": "^0.12.7"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "path": "^0.12.7",
+    "webpack": "^3.5.5"
   }
 }
