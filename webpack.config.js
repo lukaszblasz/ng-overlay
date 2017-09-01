@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
     entry: {
         'overlay': './index.js',
-        'overlay-standalone': './index-standalone.js'
+        'overlay-example': './index-example.js'
     },
     output: {
         path: __dirname + '/dist',
