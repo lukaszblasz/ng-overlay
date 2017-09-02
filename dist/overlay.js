@@ -75,8 +75,8 @@ class OverlayDirective {
 
     classes() {
         return {
-            overlayWrapper:'ng-overlay-wrapper'
-        }
+            overlayWrapper: 'ng-overlay-wrapper'
+        };
     }
 
     constructor($compile, $sce) {
@@ -89,11 +89,11 @@ class OverlayDirective {
             ngOverlayTrigger: '@',
             ngOverlayData: '<'
         };
-        
+
         this.replace = true;
     }
 
-    link(scope, el, attrs){
+    link(scope, el, attrs) {
         this.handleEvents(el, scope);
     }
 
@@ -101,7 +101,7 @@ class OverlayDirective {
         let classes = this.classes();
         this.overlayWrapper = document.querySelectorAll(`.${classes.overlayWrapper}`);
 
-        if(this.overlayWrapper.length){
+        if (this.overlayWrapper.length) {
             this.overlayWrapper.remove();
         }
 
@@ -118,27 +118,26 @@ class OverlayDirective {
 
         scope.close = () => {
             this.overlayWrapper.remove();
-        }
+        };
     }
 }
 
 OverlayDirective.$inject = ['$compile'];
 
-angular.module('ngOverlay', [])
-.directive('ngOverlay', ($compile) => new OverlayDirective($compile));
+angular.module('ngOverlay', []).directive('ngOverlay', $compile => new OverlayDirective($compile));
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (function(content){
+/* harmony default export */ __webpack_exports__["a"] = (function (content) {
     return `<div class="ng-overlay-wrapper">
         <div class="ng-overlay-controls">
             <button ng-click="close()" class="ng-overlay-close">Close</button>
         </div>
         <div class="ng-overlay-content">${content}</div>
-    </div>`
+    </div>`;
 });
 
 /***/ }),
