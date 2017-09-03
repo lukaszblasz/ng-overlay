@@ -1,10 +1,12 @@
+import './../alert/alert.component';
 import template from './app.template.html';
 import overlayTemplate from './overlay.template.html';
+import overlayTemplate2 from './overlay2.template.html';
 
 class appComponentController {
     constructor(){
-        this.overlayTemplate = overlayTemplate;
-        this.overlayTemplateData = {
+        this.overlayTemplate1 = overlayTemplate;
+        this.overlayTemplateData1 = {
             items: [
                 {
                     name: 'test1'
@@ -16,7 +18,9 @@ class appComponentController {
                     name: 'test3'
                 }
             ]
-        }
+        };
+
+        this.overlayTemplate2 = overlayTemplate2;
     }
 }
 
@@ -26,6 +30,5 @@ let appComponent = {
     template: template
 };
 
-
-angular.module('appComponentModule', [])
+angular.module('appComponentModule', ['ngOverlay', 'alertComponentModule'])
     .component('appComponent', appComponent);

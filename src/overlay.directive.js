@@ -1,4 +1,5 @@
 import template from './overlay.template';
+import './overlay.scss';
 
 class OverlayDirective {
 

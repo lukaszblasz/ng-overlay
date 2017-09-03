@@ -8,7 +8,7 @@ module.exports = {
     },
     output: {
         path: __dirname + '/dist',
-        filename: '[name].js'
+        filename: '[name]/[name].js'
     },
     module: {
         rules: [
@@ -34,7 +34,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("styles-example.css"),
+        new ExtractTextPlugin("[name]/[name].css"),
     ],
     devtool: 'source-map'
 };

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -69,6 +69,9 @@
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overlay_template__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overlay_scss__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overlay_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__overlay_scss__);
+
 
 
 class OverlayDirective {
@@ -141,17 +144,23 @@ angular.module('ngOverlay', []).directive('ngOverlay', $compile => new OverlayDi
 });
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */,
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angular__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_overlay_directive__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__example_app__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__example_styles_components_app_app_scss__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__example_app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__example_styles_components_app_app_scss__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__example_styles_components_app_app_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__example_styles_components_app_app_scss__);
 
 
@@ -161,14 +170,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(5);
+__webpack_require__(6);
 module.exports = angular;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 /**
@@ -18131,11 +18140,11 @@ if(window.console){console.log('WARNING: Tried to load angular more than once.')
 bindJQuery();publishExternalAPI(angular);angular.module("ngLocale",[],["$provide",function($provide){var PLURAL_CATEGORY={ZERO:"zero",ONE:"one",TWO:"two",FEW:"few",MANY:"many",OTHER:"other"};function getDecimals(n){n=n+'';var i=n.indexOf('.');return i==-1?0:n.length-i-1;}function getVF(n,opt_precision){var v=opt_precision;if(undefined===v){v=Math.min(getDecimals(n),3);}var base=Math.pow(10,v);var f=(n*base|0)%base;return{v:v,f:f};}$provide.value("$locale",{"DATETIME_FORMATS":{"AMPMS":["AM","PM"],"DAY":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"ERANAMES":["Before Christ","Anno Domini"],"ERAS":["BC","AD"],"FIRSTDAYOFWEEK":6,"MONTH":["January","February","March","April","May","June","July","August","September","October","November","December"],"SHORTDAY":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"SHORTMONTH":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"STANDALONEMONTH":["January","February","March","April","May","June","July","August","September","October","November","December"],"WEEKENDRANGE":[5,6],"fullDate":"EEEE, MMMM d, y","longDate":"MMMM d, y","medium":"MMM d, y h:mm:ss a","mediumDate":"MMM d, y","mediumTime":"h:mm:ss a","short":"M/d/yy h:mm a","shortDate":"M/d/yy","shortTime":"h:mm a"},"NUMBER_FORMATS":{"CURRENCY_SYM":"$","DECIMAL_SEP":".","GROUP_SEP":",","PATTERNS":[{"gSize":3,"lgSize":3,"maxFrac":3,"minFrac":0,"minInt":1,"negPre":"-","negSuf":"","posPre":"","posSuf":""},{"gSize":3,"lgSize":3,"maxFrac":2,"minFrac":2,"minInt":1,"negPre":"-\u00a4","negSuf":"","posPre":"\u00a4","posSuf":""}]},"id":"en-us","localeID":"en_US","pluralCat":function(n,opt_precision){var i=n|0;var vf=getVF(n,opt_precision);if(i==1&&vf.v==0){return PLURAL_CATEGORY.ONE;}return PLURAL_CATEGORY.OTHER;}});}]);jqLite(function(){angularInit(window.document,bootstrap);});})(window);!window.angular.$$csp().noInlineStyle&&window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_app_app_component__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_app_app_component__ = __webpack_require__(8);
 
 
 angular.module('overlayApp', ['appComponentModule']).config([function () {
@@ -18148,21 +18157,27 @@ angular.element(function () {
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_template_html__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_template_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__app_template_html__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overlay_template_html__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overlay_template_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__overlay_template_html__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__alert_alert_component__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__alert_alert_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__alert_alert_component__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_template_html__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_template_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__app_template_html__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__overlay_template_html__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__overlay_template_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__overlay_template_html__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__overlay2_template_html__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__overlay2_template_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__overlay2_template_html__);
+
+
 
 
 
 class appComponentController {
     constructor() {
-        this.overlayTemplate = __WEBPACK_IMPORTED_MODULE_1__overlay_template_html___default.a;
-        this.overlayTemplateData = {
+        this.overlayTemplate1 = __WEBPACK_IMPORTED_MODULE_2__overlay_template_html___default.a;
+        this.overlayTemplateData1 = {
             items: [{
                 name: 'test1'
             }, {
@@ -18171,33 +18186,68 @@ class appComponentController {
                 name: 'test3'
             }]
         };
+
+        this.overlayTemplate2 = __WEBPACK_IMPORTED_MODULE_3__overlay2_template_html___default.a;
     }
 }
 
 let appComponent = {
     controller: appComponentController,
-    template: __WEBPACK_IMPORTED_MODULE_0__app_template_html___default.a
+    template: __WEBPACK_IMPORTED_MODULE_1__app_template_html___default.a
 };
 
-angular.module('appComponentModule', []).component('appComponent', appComponent);
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = "<h1>App component</h1>\r\n<ul>\r\n    <li data-ng-overlay-template=\"$ctrl.overlayTemplate\" data-ng-overlay-template-data=\"$ctrl.\" data-ng-overlay-event=\"click\"></li>\r\n    <li></li>\r\n</ul>";
+angular.module('appComponentModule', ['ngOverlay', 'alertComponentModule']).component('appComponent', appComponent);
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Example overlay template</h2>";
+module.exports = "<h1>App component</h1>\r\n<ul>\r\n    <li>\r\n        <a href=\"#\" ng-overlay ng-overlay-template=\"$ctrl.overlayTemplate1\" ng-overlay-data=\"$ctrl.overlayTemplateData1\" ng-overlay-trigger=\"click\">\r\n            Activate overlay with external template filled with controller data\r\n        </a>\r\n    </li>\r\n    <li> <a href=\"#\" ng-overlay ng-overlay-template=\"$ctrl.overlayTemplate2\" ng-overlay-trigger=\"click\">\r\n       Render app component inside overlay\r\n    </a></li>\r\n</ul>";
 
 /***/ }),
 /* 10 */
 /***/ (function(module, exports) {
 
+module.exports = "<h2>Example overlay template with dynamic data</h2>\r\n<ul>\r\n    <li ng-repeat=\"item in ngOverlayData.items\">{{item}}</li>\r\n</ul>";
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = "<h3>Example component injected into overlay</h3>\r\n<alert-component></alert-component>";
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+class appComponentController {
+    constructor() {
+        this.inputValue = "";
+    }
+
+    triggerAlert() {
+        alert(this.inputValue);
+    }
+}
+
+let appComponent = {
+    controller: appComponentController,
+    template: `<input placeholder="Put text here" type="text" ng-model="$ctrl.inputValue">
+                <button ng-click="$ctrl.triggerAlert()">Alert text from input</button>`
+};
+
+angular.module('alertComponentModule', []).component('alertComponent', appComponent);
 
 /***/ })
 /******/ ]);

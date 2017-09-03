@@ -1,5 +1,11 @@
 <h1>App component</h1>
 <ul>
-    <li data-ng-overlay-template="$ctrl.overlayTemplate" data-ng-overlay-template-data="$ctrl." data-ng-overlay-event="click"></li>
-    <li></li>
+    <li>
+        <a href="#" ng-overlay ng-overlay-template="$ctrl.overlayTemplate1" ng-overlay-data="$ctrl.overlayTemplateData1" ng-overlay-trigger="click">
+            Activate overlay with external template filled with controller data
+        </a>
+    </li>
+    <li> <a href="#" ng-overlay ng-overlay-template="$ctrl.overlayTemplate2" ng-overlay-trigger="click">
+       Render app component inside overlay
+    </a></li>
 </ul>
