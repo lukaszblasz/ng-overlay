@@ -11,7 +11,8 @@ class appComponentController {
 let appComponent = {
     controller: appComponentController,
     template: `<input placeholder="Put text here" type="text" ng-model="$ctrl.inputValue">
-                <button ng-click="$ctrl.triggerAlert()">Alert text from input</button>`
+                <button ng-click="$ctrl.triggerAlert()">Alert text from input</button>
+                {{$ctrl.inputValue}}`
 };
 
 angular.module('alertComponentModule', [])

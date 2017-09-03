@@ -19,7 +19,7 @@ class OverlayDirective {
             ngOverlayTrigger: '@',
             ngOverlayData: '<'
         };
-        
+
         this.replace = true;
     }
 
@@ -39,6 +39,7 @@ class OverlayDirective {
 
         this.overlayWrapper = angular.element(template(scope.ngOverlayTemplate));
         body.append(this.$compile(this.overlayWrapper)(scope));
+        scope.$apply();
     }
 
     handleEvents(el, scope) {
@@ -54,5 +55,5 @@ class OverlayDirective {
 
 OverlayDirective.$inject = ['$compile'];
 
-angular.module('ngOverlay', [])
+angular.module('ngOverlay', ['ngSanitize'])
 .directive('ngOverlay', ($compile) => new OverlayDirective($compile));

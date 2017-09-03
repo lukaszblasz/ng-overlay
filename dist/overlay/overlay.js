@@ -112,6 +112,7 @@ class OverlayDirective {
 
         this.overlayWrapper = angular.element(Object(__WEBPACK_IMPORTED_MODULE_0__overlay_template__["a" /* default */])(scope.ngOverlayTemplate));
         body.append(this.$compile(this.overlayWrapper)(scope));
+        scope.$apply();
     }
 
     handleEvents(el, scope) {
@@ -127,7 +128,7 @@ class OverlayDirective {
 
 OverlayDirective.$inject = ['$compile'];
 
-angular.module('ngOverlay', []).directive('ngOverlay', $compile => new OverlayDirective($compile));
+angular.module('ngOverlay', ['ngSanitize']).directive('ngOverlay', $compile => new OverlayDirective($compile));
 
 /***/ }),
 /* 1 */
@@ -135,12 +136,12 @@ angular.module('ngOverlay', []).directive('ngOverlay', $compile => new OverlayDi
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = (function (content) {
-    return `<div class="ng-overlay-wrapper">
+    return `<div></div><div class="ng-overlay-wrapper">
         <div class="ng-overlay-controls">
             <button ng-click="close()" class="ng-overlay-close">Close</button>
         </div>
         <div class="ng-overlay-content">${content}</div>
-    </div>`;
+    </div></div>`;
 });
 
 /***/ }),

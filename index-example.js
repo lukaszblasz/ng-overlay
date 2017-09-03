@@ -1,4 +1,5 @@
 import 'angular';
+import 'angular-sanitize';
 import './src/overlay.directive';
 
 import './example/app';
