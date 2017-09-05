@@ -23,8 +23,22 @@ class OverlayDirective {
         this.replace = true;
     }
 
-    link(scope, el, attrs){
+   link(scope, el, attrs) {
         this.handleEvents(el, scope);
+
+        scope.$watch('ngOverlayData', (newValue, oldValue) => {
+            if(newValue.visible === true){
+                this.createOverlayContainer(scope);
+            }
+            else if(newValue.visible === false) {
+                this.closeOverlay(scope);
+            }
+        }, true);
+    }
+
+    closeOverlay(scope) {
+        scope.ngOverlayData.visible = false;
+        this.overlayWrapper.remove();
     }
 
     createOverlayContainer(scope) {
@@ -39,17 +53,17 @@ class OverlayDirective {
 
         this.overlayWrapper = angular.element(template(scope.ngOverlayTemplate));
         body.append(this.$compile(this.overlayWrapper)(scope));
-        scope.$apply();
     }
 
     handleEvents(el, scope) {
         el.on(scope.ngOverlayTrigger, () => {
             this.createOverlayContainer(scope);
+            scope.$apply();
         });
 
         scope.close = () => {
-            this.overlayWrapper.remove();
-        }
+            this.closeOverlay(scope)
+        };
     }
 }
 

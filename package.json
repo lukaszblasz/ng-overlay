@@ -2,7 +2,7 @@
   "name": "ng-overlay",
   "version": "0.0.1",
   "description": "Angular directive for overlay",
-  "main": "dist/overlay.js",
+  "main": "dist/overlay/overlay.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,5 +29,13 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5"
-  }
+  },
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [
+    "overlay",
+    "angular",
+    "ng-overlay"
+  ]
 }
