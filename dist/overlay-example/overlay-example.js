@@ -98,6 +98,19 @@ class OverlayDirective {
 
     link(scope, el, attrs) {
         this.handleEvents(el, scope);
+
+        scope.$watch('ngOverlayData', (newValue, oldValue) => {
+            if (newValue.visible === true) {
+                this.createOverlayContainer(scope);
+            } else if (newValue.visible === false) {
+                this.closeOverlay(scope);
+            }
+        }, true);
+    }
+
+    closeOverlay(scope) {
+        scope.ngOverlayData.visible = false;
+        this.overlayWrapper.remove();
     }
 
     createOverlayContainer(scope) {
@@ -112,16 +125,16 @@ class OverlayDirective {
 
         this.overlayWrapper = angular.element(Object(__WEBPACK_IMPORTED_MODULE_0__overlay_template__["a" /* default */])(scope.ngOverlayTemplate));
         body.append(this.$compile(this.overlayWrapper)(scope));
-        scope.$apply();
     }
 
     handleEvents(el, scope) {
         el.on(scope.ngOverlayTrigger, () => {
             this.createOverlayContainer(scope);
+            scope.$apply();
         });
 
         scope.close = () => {
-            this.overlayWrapper.remove();
+            this.closeOverlay(scope);
         };
     }
 }
@@ -19001,19 +19014,19 @@ angular.module('alertComponentModule', []).component('alertComponent', appCompon
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>App component</h1>\r\n<ul>\r\n    <li>\r\n        <a href=\"#\" ng-overlay ng-overlay-template=\"$ctrl.overlayTemplate1\" ng-overlay-data=\"$ctrl.overlayTemplateData1\" ng-overlay-trigger=\"click\">\r\n            Activate overlay with external template filled with controller data\r\n        </a>\r\n    </li>\r\n    <li> <a href=\"#\" ng-overlay ng-overlay-template=\"$ctrl.overlayTemplate2\" ng-overlay-trigger=\"click\">\r\n       Render app component inside overlay\r\n    </a></li>\r\n</ul>";
+module.exports = "<h1>App component</h1>\n<ul>\n    <li>\n        <a href=\"#\" ng-overlay ng-overlay-template=\"$ctrl.overlayTemplate1\" ng-overlay-data=\"$ctrl.overlayTemplateData1\" ng-overlay-trigger=\"click\">\n            Activate overlay with external template filled with controller data\n        </a>\n    </li>\n    <li> <a href=\"#\" ng-overlay ng-overlay-template=\"$ctrl.overlayTemplate2\" ng-overlay-trigger=\"click\">\n       Render app component inside overlay\n    </a></li>\n</ul>";
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <h2>Example overlay template with dynamic data</h2>\r\n    <ul>\r\n        <li ng-repeat=\"item in ngOverlayData.items\">{{item}}</li>\r\n    </ul>\r\n</div>";
+module.exports = "<div>\n    <h2>Example overlay template with dynamic data</h2>\n    <ul>\n        <li ng-repeat=\"item in ngOverlayData.items\">{{item}}</li>\n    </ul>\n</div>";
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Example component injected into overlay</h3>\r\n<alert-component></alert-component>";
+module.exports = "<h3>Example component injected into overlay</h3>\n<alert-component></alert-component>";
 
 /***/ }),
 /* 15 */
