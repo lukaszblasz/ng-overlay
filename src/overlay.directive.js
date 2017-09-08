@@ -9,36 +9,44 @@ class OverlayDirective {
         }
     }
 
-    constructor($compile, $sce) {
+    constructor($compile, $timeout) {
         this.$compile = $compile;
-        this.$sce = $sce;
+        this.$timeout = $timeout;
 
         this.restrict = 'A';
         this.scope = {
             ngOverlayTemplate: '<',
             ngOverlayTrigger: '@',
-            ngOverlayData: '<'
+            ngOverlayData: '<',
+            ngOverlayOnShow: '&',
+            ngOverlayOnClose: '&'
         };
 
         this.replace = true;
     }
 
-   link(scope, el, attrs) {
+    link(scope, el, attrs) {
         this.handleEvents(el, scope);
 
         scope.$watch('ngOverlayData', (newValue, oldValue) => {
-            if(newValue.visible === true){
+            if (newValue && newValue.visible === true) {
                 this.createOverlayContainer(scope);
-            }
-            else if(newValue.visible === false) {
+            } else if (newValue && newValue.visible === false) {
                 this.closeOverlay(scope);
             }
         }, true);
     }
 
     closeOverlay(scope) {
-        scope.ngOverlayData.visible = false;
-        this.overlayWrapper.remove();
+        if(scope.ngOverlayData){
+            scope.ngOverlayData.visible = false;
+        }
+        if(this.overlayWrapper) {
+            this.overlayWrapper.remove();
+        }
+        if(this.ngOverlayOnClose){
+            this.ngOverlayOnClose();
+        }
     }
 
     createOverlayContainer(scope) {
@@ -53,6 +61,11 @@ class OverlayDirective {
 
         this.overlayWrapper = angular.element(template(scope.ngOverlayTemplate));
         body.append(this.$compile(this.overlayWrapper)(scope));
+        this.$timeout(()=> {
+            if(this.ngOverlayOnShow){
+                this.ngOverlayOnShow();
+            }
+        }, 0)
     }
 
     handleEvents(el, scope) {
@@ -67,7 +80,7 @@ class OverlayDirective {
     }
 }
 
-OverlayDirective.$inject = ['$compile'];
+OverlayDirective.$inject = ['$compile', '$timeout'];
 
 angular.module('ngOverlay', ['ngSanitize'])
-.directive('ngOverlay', ($compile) => new OverlayDirective($compile));
+.directive('ngOverlay', ($compile, $timeout) => new OverlayDirective($compile, $timeout));
