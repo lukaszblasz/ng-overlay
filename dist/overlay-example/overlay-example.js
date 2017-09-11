@@ -91,8 +91,9 @@ class OverlayDirective {
             ngOverlayTemplate: '<',
             ngOverlayTrigger: '@',
             ngOverlayData: '<',
-            ngOverlayOnShow: '&',
-            ngOverlayOnClose: '&'
+            ngOverlayShow: '&ngOverlayOnShow',
+            ngOverlayClose: '&ngOverlayOnClose',
+            ngOverlayCloseTimeout: '@'
         };
 
         this.replace = true;
@@ -111,14 +112,22 @@ class OverlayDirective {
     }
 
     closeOverlay(scope) {
-        if (scope.ngOverlayData) {
-            scope.ngOverlayData.visible = false;
+        if (scope.ngOverlayCloseTimeout) {
+            this.$timeout(() => {
+                this.closeOverlayActions(scope);
+            }, parseInt(scope.ngOverlayCloseTimeout));
+        } else {
+            this.closeOverlayActions(scope);
         }
+    }
+
+    closeOverlayActions(scope) {
         if (this.overlayWrapper) {
             this.overlayWrapper.remove();
         }
-        if (this.ngOverlayOnClose) {
-            this.ngOverlayOnClose();
+
+        if (scope.ngOverlayClose) {
+            scope.ngOverlayClose();
         }
     }
 
@@ -148,7 +157,7 @@ class OverlayDirective {
         });
 
         scope.close = () => {
-            this.closeOverlay(scope);
+            scope.ngOverlayData.visible = false;
         };
     }
 }
