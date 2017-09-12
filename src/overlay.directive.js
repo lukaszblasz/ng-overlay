@@ -42,6 +42,7 @@ class OverlayDirective {
     }
 
     closeOverlay(scope) {
+        scope.closingOverlay = true;
         if(scope.ngOverlayCloseTimeout) {
             this.$timeout(()=> {
                 this.closeOverlayActions(scope);
