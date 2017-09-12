@@ -27,6 +27,9 @@ class OverlayDirective {
     }
 
     link(scope, el, attrs) {
+        if(!scope.ngOverlayData){
+            scope.ngOverlayData = {}
+        }
         this.handleEvents(el, scope);
 
         scope.$watch('ngOverlayData', (newValue, oldValue) => {
@@ -71,16 +74,16 @@ class OverlayDirective {
 
         this.overlayWrapper = angular.element(template(scope.ngOverlayTemplate));
         body.append(this.$compile(this.overlayWrapper)(scope));
-        this.$timeout(()=> {
-            if(this.ngOverlayOnShow){
-                this.ngOverlayOnShow();
+        this.$timeout(() => {
+            if (scope.ngOverlayShow) {
+                scope.ngOverlayShow();
             }
-        }, 0)
+        }, 0);
     }
 
     handleEvents(el, scope) {
         el.on(scope.ngOverlayTrigger, () => {
-            this.createOverlayContainer(scope);
+            scope.ngOverlayData.visible = true;
             scope.$apply();
         });
 
