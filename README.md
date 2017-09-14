@@ -21,7 +21,7 @@ angular.module('myModule', ['ngOverlay']) //add dependency to ngOverlay to your 
 In template attach directive to any elemnt:
 
 ```
-<div class="test-dic"
+<div class="test-div"
      data-ng-overlay
      data-ng-overlay-template="$ctrl.overlayTemplate"
      data-ng-overlay-data="$ctrl.overlayData"
@@ -35,11 +35,14 @@ In template attach directive to any elemnt:
 | property name | Description   |
 | ------------- |:-------------:| 
 | data-ng-overlay | is required to attach directive to element |
-| data-ng-overlay-template | angular template which will be displayed inside overlay, template may include angular oprerations or simple angular components with bindings     | 
+| data-ng-overlay-template | angular template which will be displayed inside overlay, template may include angular oprerations or simple angular components with bindings, in template we shoudl use only items which comes from data-ng-ovverlay-data, they will be available under ngOverlayData variable in template | 
 | data-ng-overlay-data | object with data to fill overlay | 
 | data-ng-overlay-on-close | method called after closing overlay|
 | data-ng-overlay-on-show | method called afetr showing overlay |
 | data-ng-overlay-close-timeout| timeout after overlay will be closed(helpfull when attaching css animation to element) |
+
+#Example usage
+For working examples please see /examples section.
 
 
 
