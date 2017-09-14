@@ -31,6 +31,9 @@ In template attach directive to any elemnt:
 </div>
 ````
 
+Attach basic styles from: dist/overlay/overlay.css
+Its hight recommented to create your own styling, dependant on your needs.
+
 # Properties
 | property name | Description   |
 | ------------- |:-------------:| 
