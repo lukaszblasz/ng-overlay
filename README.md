@@ -41,8 +41,7 @@ In template attach directive to any elemnt:
 | data-ng-overlay-on-show | method called afetr showing overlay |
 | data-ng-overlay-close-timeout| timeout after overlay will be closed(helpfull when attaching css animation to element) |
 
-#Example usage
+# Example usage
 For working examples please see /examples section.
-
 
 
