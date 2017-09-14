@@ -31,5 +31,15 @@ In template attach directive to any elemnt:
 </div>
 ````
 
-# How to use
-For example usacases see 'examples' sectin.
+# Properties
+| property name | Description   |
+| ------------- |:-------------:| 
+| data-ng-overlay | is required to attach directive to element |
+| data-ng-overlay-template | angular template which will be displayed inside overlay, template may include angular oprerations or simple angular components with bindings     | 
+| data-ng-overlay-data | object with data to fill overlay | 
+| data-ng-overlay-on-close | method called after closing overlay|
+| data-ng-overlay-on-show | method called afetr showing overlay |
+| data-ng-overlay-close-timeout| timeout after overlay will be closed(helpfull when attaching css animation to element) |
+
+
+
