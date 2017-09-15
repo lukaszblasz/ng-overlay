@@ -127,8 +127,7 @@ class OverlayDirective {
 
     closeOverlayActions(scope) {
         if (this.overlayWrapper) {
-            scope.closingOverlay = false;
-            this.overlayWrapper.remove();
+            scope.closingOverlay = this.overlayWrapper.remove();
         }
 
         if (scope.ngOverlayClose) {
@@ -164,6 +163,14 @@ class OverlayDirective {
         scope.close = () => {
             scope.ngOverlayData.visible = false;
         };
+
+        angular.element(document).on('keyup', event => {
+            if (scope.ngOverlayData.visible === true && event.keyCode === 27) {
+                ///ESC
+                scope.ngOverlayData.visible = false;
+                scope.$apply();
+            }
+        });
     }
 }
 
