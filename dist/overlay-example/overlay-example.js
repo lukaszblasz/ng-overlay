@@ -127,7 +127,8 @@ class OverlayDirective {
 
     closeOverlayActions(scope) {
         if (this.overlayWrapper) {
-            scope.closingOverlay = this.overlayWrapper.remove();
+            scope.closingOverlay = false;
+            this.overlayWrapper.remove();
         }
 
         if (scope.ngOverlayClose) {
