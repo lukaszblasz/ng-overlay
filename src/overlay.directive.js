@@ -55,6 +55,7 @@ class OverlayDirective {
 
     closeOverlayActions(scope){
         if (this.overlayWrapper) {
+            scope.closingOverlay = false;
             this.overlayWrapper.remove();
         }
 

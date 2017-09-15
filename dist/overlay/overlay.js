@@ -115,6 +115,7 @@ class OverlayDirective {
     }
 
     closeOverlay(scope) {
+        scope.closingOverlay = true;
         if (scope.ngOverlayCloseTimeout) {
             this.$timeout(() => {
                 this.closeOverlayActions(scope);
@@ -126,6 +127,7 @@ class OverlayDirective {
 
     closeOverlayActions(scope) {
         if (this.overlayWrapper) {
+            scope.closingOverlay = false;
             this.overlayWrapper.remove();
         }
 
@@ -175,7 +177,7 @@ angular.module('ngOverlay', ['ngSanitize']).directive('ngOverlay', ($compile, $t
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = (function (content) {
-    return `<div></div><div class="ng-overlay-wrapper">
+    return `<div></div><div data-ng-class="{'ng-overlay-closing': closingOverlay}" class="ng-overlay-wrapper">
         <div class="ng-overlay-controls">
             <button ng-click="close()" class="ng-overlay-close">Close</button>
         </div>
