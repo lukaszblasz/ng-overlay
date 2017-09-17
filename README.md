@@ -29,14 +29,17 @@ In template attach directive to any elemnt:
      data-ng-overlay-on-show="$ctrl.onShow()"
      data-ng-overlay-close-timeout="500">
 </div>
-````
+```
 
 Attach basic styles from: dist/overlay/overlay.css
 Its hight recommented to create your own styling based on ones provided, dependant on your needs.
 
 # How to use - example
 
-app.component.js
+In below example we have single angular component called app. App component has a button which is responsible for showing overlay.
+We want to pass to overlay custom template with list of items and also execute method from our component in context of overlay
+(countAlert). In below example overlay is triggered using simple click event.
+
 ``` 
 import 'angular-sanitize';
 import 'ng-overlay';
@@ -96,13 +99,20 @@ angular.module('appComponentModule', ['ngOverlay'])
 
 ```
 
-# How to show overlay
+# How to show/hide overlay
 
 There are 2 ways to show overlay first(the easiest) is to attach data-ng-overlay-trigger="eventName" to any element in template.
 It may be simple click or mouseenter events.
 
-The second way(advenced) is to pass ngOverlayData.visible="true" (visible property to template overlayData object). It may be usefull when overlay should be shown after some ajax event on other action. Setting ngOverlayData.visible="false" will close overlay.
+The second way(advenced) is to pass ngOverlayData.visible="true" (visible property to template overlayData object). It may be usefull when overlay should be shown after some ajax event on other action. 
 
+Setting ngOverlayData.visible="false" will close overlay. Also X button(on overlay) and ESC will trigger overlay closing.
+
+# How to attach animation
+
+Animation should be attached using css. Overlay main class is 'ng-overlay-wrapper' you can attach css animation to that element easily.
+
+Closing overlay is more complicated. After closing whole overlay data is removed from DOM. To implement hiding animation there is a need to set data-ng-overlay-close-timeout property with proper value in milisecond. After triggering closing action 'ng-overlay-closing' class will be added to 'ng-overlay-wrapper' and css animation may be attached. Css animation time should match a value we use in close-timeout property.
 
 # Properties
 | property name | Description   |
