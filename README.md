@@ -20,7 +20,7 @@ angular.module('myModule', ['ngOverlay']) //add dependency to ngOverlay to your 
 ```
 In template attach directive to any elemnt:
 
-```
+```html
 <div class="test-div"
      data-ng-overlay
      data-ng-overlay-template="$ctrl.overlayTemplate"
@@ -40,7 +40,7 @@ In below example we have single angular component called app. App component has 
 We want to pass to overlay custom template with list of items and also execute method from our component in context of overlay
 (countAlert). In below example overlay is triggered using simple click event.
 
-``` 
+```javascript 
 import 'angular-sanitize';
 import 'ng-overlay';
 
