@@ -33,10 +33,12 @@ class OverlayDirective {
         this.handleEvents(el, scope);
 
         scope.$watch('ngOverlayData', (newValue, oldValue) => {
-            if (newValue && newValue.visible === true) {
-                this.createOverlayContainer(scope);
-            } else if (newValue && newValue.visible === false) {
-                this.closeOverlay(scope);
+            if(newValue.visible !== oldValue.visible) {
+                if (newValue && newValue.visible === true) {
+                    this.createOverlayContainer(scope);
+                } else if (newValue && newValue.visible === false) {
+                    this.closeOverlay(scope);
+                }
             }
         }, true);
     }
