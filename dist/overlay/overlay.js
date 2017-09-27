@@ -65,24 +65,36 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overlay_template__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overlay_scss__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__overlay_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__overlay_scss__);
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-class OverlayDirective {
+var _overlay = __webpack_require__(1);
 
-    classes() {
-        return {
-            overlayWrapper: 'ng-overlay-wrapper'
-        };
-    }
+var _overlay2 = _interopRequireDefault(_overlay);
 
-    constructor($compile, $timeout) {
+__webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var OverlayDirective = function () {
+    _createClass(OverlayDirective, [{
+        key: 'classes',
+        value: function classes() {
+            return {
+                overlayWrapper: 'ng-overlay-wrapper'
+            };
+        }
+    }]);
+
+    function OverlayDirective($compile, $timeout) {
+        _classCallCheck(this, OverlayDirective);
+
         this.$compile = $compile;
         this.$timeout = $timeout;
 
@@ -99,101 +111,117 @@ class OverlayDirective {
         this.replace = true;
     }
 
-    link(scope, el, attrs) {
-        if (!scope.ngOverlayData) {
-            scope.ngOverlayData = {};
-        }
-        this.handleEvents(el, scope);
+    _createClass(OverlayDirective, [{
+        key: 'link',
+        value: function link(scope, el, attrs) {
+            var _this = this;
 
-        scope.$watch('ngOverlayData', (newValue, oldValue) => {
-            if (newValue.visible !== oldValue.visible) {
-                if (newValue && newValue.visible === true) {
-                    this.createOverlayContainer(scope);
-                } else if (newValue && newValue.visible === false) {
-                    this.closeOverlay(scope);
+            if (!scope.ngOverlayData) {
+                scope.ngOverlayData = {};
+            }
+            this.handleEvents(el, scope);
+
+            scope.$watch('ngOverlayData', function (newValue, oldValue) {
+                if (newValue.visible !== oldValue.visible) {
+                    if (newValue && newValue.visible === true) {
+                        _this.createOverlayContainer(scope);
+                    } else if (newValue && newValue.visible === false) {
+                        _this.closeOverlay(scope);
+                    }
                 }
-            }
-        }, true);
-    }
+            }, true);
+        }
+    }, {
+        key: 'closeOverlay',
+        value: function closeOverlay(scope) {
+            var _this2 = this;
 
-    closeOverlay(scope) {
-        scope.closingOverlay = true;
-        if (scope.ngOverlayCloseTimeout) {
-            this.$timeout(() => {
+            scope.closingOverlay = true;
+            if (scope.ngOverlayCloseTimeout) {
+                this.$timeout(function () {
+                    _this2.closeOverlayActions(scope);
+                }, parseInt(scope.ngOverlayCloseTimeout));
+            } else {
                 this.closeOverlayActions(scope);
-            }, parseInt(scope.ngOverlayCloseTimeout));
-        } else {
-            this.closeOverlayActions(scope);
-        }
-    }
-
-    closeOverlayActions(scope) {
-        if (this.overlayWrapper) {
-            scope.closingOverlay = false;
-            this.overlayWrapper.remove();
-        }
-
-        if (scope.ngOverlayClose) {
-            scope.ngOverlayClose();
-        }
-    }
-
-    createOverlayContainer(scope) {
-        let classes = this.classes();
-        this.overlayWrapper = document.querySelectorAll(`.${classes.overlayWrapper}`);
-
-        if (this.overlayWrapper.length) {
-            this.overlayWrapper.remove();
-        }
-
-        let body = angular.element(document.getElementsByTagName('body')[0]);
-
-        this.overlayWrapper = angular.element(Object(__WEBPACK_IMPORTED_MODULE_0__overlay_template__["a" /* default */])(scope.ngOverlayTemplate));
-        body.append(this.$compile(this.overlayWrapper)(scope));
-        this.$timeout(() => {
-            if (scope.ngOverlayShow) {
-                scope.ngOverlayShow();
             }
-        }, 0);
-    }
+        }
+    }, {
+        key: 'closeOverlayActions',
+        value: function closeOverlayActions(scope) {
+            if (this.overlayWrapper) {
+                scope.closingOverlay = false;
+                this.overlayWrapper.remove();
+            }
 
-    handleEvents(el, scope) {
-        el.on(scope.ngOverlayTrigger, () => {
-            scope.ngOverlayData.visible = true;
-            scope.$apply();
-        });
+            if (scope.ngOverlayClose) {
+                scope.ngOverlayClose();
+            }
+        }
+    }, {
+        key: 'createOverlayContainer',
+        value: function createOverlayContainer(scope) {
+            var classes = this.classes();
+            this.overlayWrapper = document.querySelectorAll('.' + classes.overlayWrapper);
 
-        scope.close = () => {
-            scope.ngOverlayData.visible = false;
-        };
+            if (this.overlayWrapper.length) {
+                this.overlayWrapper.remove();
+            }
 
-        angular.element(document).on('keyup', event => {
-            if (scope.ngOverlayData.visible === true && event.keyCode === 27) {
-                ///ESC
-                scope.ngOverlayData.visible = false;
+            var body = angular.element(document.getElementsByTagName('body')[0]);
+
+            this.overlayWrapper = angular.element((0, _overlay2.default)(scope.ngOverlayTemplate));
+            body.append(this.$compile(this.overlayWrapper)(scope));
+            this.$timeout(function () {
+                if (scope.ngOverlayShow) {
+                    scope.ngOverlayShow();
+                }
+            }, 0);
+        }
+    }, {
+        key: 'handleEvents',
+        value: function handleEvents(el, scope) {
+            el.on(scope.ngOverlayTrigger, function () {
+                scope.ngOverlayData.visible = true;
                 scope.$apply();
-            }
-        });
-    }
-}
+            });
+
+            scope.close = function () {
+                scope.ngOverlayData.visible = false;
+            };
+
+            angular.element(document).on('keyup', function (event) {
+                if (scope.ngOverlayData.visible === true && event.keyCode === 27) {
+                    ///ESC
+                    scope.ngOverlayData.visible = false;
+                    scope.$apply();
+                }
+            });
+        }
+    }]);
+
+    return OverlayDirective;
+}();
 
 OverlayDirective.$inject = ['$compile', '$timeout'];
 
-angular.module('ngOverlay', ['ngSanitize']).directive('ngOverlay', ($compile, $timeout) => new OverlayDirective($compile, $timeout));
+angular.module('ngOverlay', ['ngSanitize']).directive('ngOverlay', function ($compile, $timeout) {
+    return new OverlayDirective($compile, $timeout);
+});
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (function (content) {
-    return `<div></div><div data-ng-class="{'ng-overlay-closing': closingOverlay}" class="ng-overlay-wrapper">
-        <div class="ng-overlay-controls">
-            <button ng-click="close()" class="ng-overlay-close">Close</button>
-        </div>
-        <div class="ng-overlay-content">${content}</div>
-    </div></div>`;
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
+
+exports.default = function (content) {
+    return "<div></div><div data-ng-class=\"{'ng-overlay-closing': closingOverlay}\" class=\"ng-overlay-wrapper\">\n        <div class=\"ng-overlay-controls\">\n            <button ng-click=\"close()\" class=\"ng-overlay-close\">Close</button>\n        </div>\n        <div class=\"ng-overlay-content\">" + content + "</div>\n    </div></div>";
+};
 
 /***/ }),
 /* 2 */
@@ -203,12 +231,12 @@ angular.module('ngOverlay', ['ngSanitize']).directive('ngOverlay', ($compile, $t
 
 /***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_overlay_directive__ = __webpack_require__(0);
 
+
+__webpack_require__(0);
 
 /***/ })
 /******/ ]);
