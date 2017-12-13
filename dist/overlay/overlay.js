@@ -220,7 +220,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (content) {
-    return "<div></div><div data-ng-class=\"{'ng-overlay-closing': closingOverlay}\" class=\"ng-overlay-wrapper\">\n        <div class=\"ng-overlay-controls\">\n            <button ng-click=\"close()\" class=\"ng-overlay-close\">Close</button>\n        </div>\n        <div class=\"ng-overlay-content\">" + content + "</div>\n    </div></div>";
+    return "<div></div><div role=\"dialog\" data-ng-class=\"{'ng-overlay-closing': closingOverlay}\" class=\"ng-overlay-wrapper\">\n        <div class=\"ng-overlay-controls\">\n            <button ng-click=\"close()\" class=\"ng-overlay-close\">Close</button>\n        </div>\n        <div class=\"ng-overlay-content\">" + content + "</div>\n    </div></div>";
 };
 
 /***/ }),
